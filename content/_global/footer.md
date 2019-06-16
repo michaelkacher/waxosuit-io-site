@@ -1,21 +1,19 @@
 +++
 fragment = "footer"
 #disabled = true
-date = "2016-09-07"
+date = "2019-06-14"
 weight = 1200
 #background = ""
 
-menu_title = "Link Title"
+menu_title = "Quick Links"
 
 [asset]
-  title = "Logo Title"
-  image = "logo.svg"
-  text = "Logo Subtext"
+  title = "Waxosuit"
+  image = "Logo_On_Robo_NOBG_Shadow.png"
+  text = "Waxosuit"
   url = "#"
 +++
 
-#### Description Title
+#### Waxosuit
 
-Project description such as:
-Open source theme for your next project
-Provided by Okkur Labs
+A secure WebAssembly runtime environment for enterprise-grade, cloud-native applications with a focus on productivity and developer experience.

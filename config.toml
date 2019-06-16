@@ -1,7 +1,7 @@
 # Site settings
 baseurl = "/"
 languageCode = "en-us"
-title = "Okkur - Syna"
+title = "Waxosuit"
 theme = "syna"
 enableGitInfo = true
 version = "0.15.0"
@@ -17,8 +17,8 @@ lastmod = ["lastmod", ":git", "date"]
 googleAnalytics = ""
 
 [params]
-  name = "Okkur Labs"
-  description = "Open Source Theme for your next project"
+  name = "Waxosuit"
+  description = "A secure WebAssembly runtime environment for enterprise-grade, cloud-native applications with a focus on productivity and developer experience."
 
   [params.style]
     #background = "secondary"
@@ -26,10 +26,10 @@ googleAnalytics = ""
   # Theme customizations
   # Assets relative to 'static/'
   [params.custom]
-    favicon = "favicon.ico"
-    favicon_ico_sizes = "16x16 32x32"
-    favicon_png = "favicon.png"
-    favicon_svg = "favicon.svg"
+    favicon = "images/favicon.ico"
+    #favicon_ico_sizes = "16x16 32x32"
+    favicon_png = "images/favicon.png"
+    #favicon_svg = "favicon.svg"
 
   # Piwik tracking
   [params.analytics.piwik]
@@ -65,47 +65,47 @@ googleAnalytics = ""
 
 [[menu.main]]
   url = "/about"
-  name = "About Us"
+  name = "About"
   weight = 20
 
-[[menu.main]]
-  url = "#contact"
-  name = "Contact"
-  weight = 30
+#[[menu.main]]
+#  url = "#contact"
+#  name = "Contact"
+#  weight = 30
 
 [[menu.footer]]
-  url = "#"
-  name = "Link"
+  url = "/getstarted"
+  name = "Getting Started"
   weight = 10
 
 [[menu.footer]]
-  url = "#"
-  name = "Long Link"
+  url = "/docs"
+  name = "Documentation"
+  weight = 20
+
+[[menu.footer]]
+  url = "/providers"
+  name = "Capability Providers"
   weight = 30
 
 [[menu.footer]]
-  url = "#"
-  name = "Tiny Link"
-  weight = 30
+  url = "/faq"
+  name = "FAQ"
+  weight = 40
 
 [[menu.copyright_footer]]
   url = "/about"
-  name = "About Us"
+  name = "About"
   weight = 10
-
-[[menu.copyright_footer]]
-  url = "#"
-  name = "Another Link"
-  weight = 30
 
 [[menu.footer_social]]
   weight = 20
-  name = "facebook"
-  pre = "fab fa-facebook-f"
-  url = "#"
+  name = "twitter"
+  pre = "fab fa-twitter"
+  url = "https://twitter.com/waxosuit"
 
 [[menu.footer_social]]
   weight = 30
-  name = "linkedin"
-  pre = "fab fa-linkedin-in"
+  name = "github"
+  pre = "fab fa-github"
   url = "#"

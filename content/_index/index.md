@@ -1,6 +1,6 @@
 +++
 url = "/"
-title = "Syna Theme"
+title = "Waxosuit"
 date = "2017-09-07"
-description = "Open Source Theme from Okkur for your next project"
+description = "A secure WebAssembly runtime environment for enterprise-grade, cloud-native applications with a focus on productivity and developer experience."
 +++
