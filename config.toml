@@ -5,6 +5,8 @@ title = "Waxosuit"
 theme = "syna"
 enableGitInfo = true
 version = "0.15.0"
+# Google Analytics tracking
+googleAnalytics = "UA-143249576-1"
 
 [outputs]
   home = ["HTML", "JSON"]
@@ -13,8 +15,6 @@ version = "0.15.0"
 date = ["date", "lastmod"]
 lastmod = ["lastmod", ":git", "date"]
 
-# Google Analytics tracking
-googleAnalytics = "UA-143249576-1"
 
 [params]
   name = "Waxosuit"
