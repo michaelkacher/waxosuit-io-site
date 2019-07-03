@@ -14,7 +14,7 @@ date = ["date", "lastmod"]
 lastmod = ["lastmod", ":git", "date"]
 
 # Google Analytics tracking
-googleAnalytics = ""
+googleAnalytics = "UA-143249576-1"
 
 [params]
   name = "Waxosuit"
