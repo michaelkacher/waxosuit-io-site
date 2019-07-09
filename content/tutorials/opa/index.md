@@ -45,19 +45,41 @@ Probably the simplest policy we can write would be one that requires any module 
 
 By convention, the _issuer_ of a Wascap-signed module is the _public key_ of an **account**. For more information on the various types of keys, check out the [nkeys](https://github.com/encabulators/nkeys) crate.
 
-Lets write a policy that will set the `allow` variable to whether or not the issuer of the supplied token belongs to a specific public key. If you've done the other tutorials, you should have a valid _account_ public key lying around. You can also just grab an issuer by running `wascap caps (mymodule).wasm`, you'll see the issuer's public key in the output.
+Waxosuit's OPA integration requires two fields in the JSON output:
+  
+  * **allow** - A boolean indicating whether the module should be allowed to run
+  * **cause** - An array of strings with a list of justifications for the allow field (will be an empty array when **allow** is true)
+
+Now let's write a policy that conforms to this interface. If you've done the other tutorials, you should have a valid _account_ public key lying around. You can also just grab an issuer by running `wascap caps (mymodule).wasm`, you'll see the issuer's public key in the output.
 
 Create the following `authz.rego` file and replace the **"A..."** text with the public key of your account.
 
 ```
 package system
 
+default allow = false
+
 import input
 
 token = {"payload": payload} { io.jwt.decode(input.token, [_, payload, _]) }
 
+allow {
+	valid_issuer
+}
+
+cause["issuer not valid"] {
+	not valid_issuer
+}
+
+valid_issuer {
+    token.payload.iss == "ACNIHZFDBJZD7SC2B6XDMI6UAXSHM5OCPRHHSXXUMGVCGDTM43QJKUTH"
+}
+
 main = res {
-    res := { "allow" : token.payload.iss == "ACNIHZFDBJZD7SC2B6XDMI6UAXSHM5OCPRHHSXXUMGVCGDTM43QJKUTH" }
+    res := {
+        "allow": allow,
+        "cause": cause
+    }
 }
 ```
 
@@ -69,6 +91,8 @@ Configuring OPA integration is as simple as setting an environment variable that
 In the case of this tutorial, we're creating a policy that gets evaluated as the default (root) URL. For more information on how to create a hierarchy of policies, consult the OPA documentation.
 
 Set the `OPA_URL` environment variable to `http://0.0.0.0:8181`. If you're running OPA on a different address, make sure to set the environment variable appropriately.
+
+**NOTE** - In this tutorial setting, it's fine to use an unsecured connection to OPA, but in production you will want, at the very least, TLS enabled. For more information on securing OPA endpoints, check out the [OPA Documentation](https://www.openpolicyagent.org/docs/latest/security/) on the subject.
 
 
 <a name="run"></a>
@@ -89,13 +113,14 @@ With OPA running and the `OPA_URL` environment variable pointing to OPA, you can
 ```
 
 Next, let's see what happens when the answer from an OPA module is to deny (the `allow` field is _false_). You can make this happen one of two ways:
+
 * Create a new signed Wasm module signed by a different/invalid issuer
-* Modify the `authz.rego` file so that the valid issuer is different
+* Modify the `authz.rego` file so that the check for valid issuer fails
 
 Now when you run Waxosuit you should see output that looks like the following:
 ```session
-[2019-07-05T16:30:32Z INFO  waxosuit] OPA validation DENIED
-Error: Error(WascapViolation("OPA denied this module"))
+[2019-07-09T18:06:10Z INFO  waxosuit] OPA validation DENIED
+Error: Error(WascapViolation("OPA denied this module: issuer not valid"))
 ```
 
 Waxosuit will then terminate as a result of OPA denying the module, even though the JWT signature is valid and the contents all could be valid. Integrating with OPA gives you the ability to execute these policies to have the final say over which workloads can and cannot be scheduled.
