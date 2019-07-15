@@ -7,7 +7,7 @@ background = "light" # can influence the text color
 particles = true
 
 title = "Waxosuit"
-subtitle = "The Cloud-Native Exosuit for WebAssembly"
+subtitle = "WebAssembly in the Cloud"
 
 [header]
   image = "header.jpg"
