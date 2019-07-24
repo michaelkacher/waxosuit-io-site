@@ -93,10 +93,10 @@ lastmod = ["lastmod", ":git", "date"]
   name = "FAQ"
   weight = 40
 
-[[menu.copyright_footer]]
-  url = "/about"
-  name = "About"
-  weight = 10
+#[[menu.copyright_footer]]
+#  url = "/about"
+#  name = "About"
+#  weight = 10
 
 [[menu.footer_social]]
   weight = 20

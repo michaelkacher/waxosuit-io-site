@@ -10,7 +10,7 @@ title = "Introducing Waxosuit"
 #title_align = "left" # Default is center, can be left, right or center
 +++
 
-**Waxosuit** is a cloud-native WebAssembly host runtime that dynamically and securely binds Wasm modules to capability providers.
+**Waxosuit** is a cloud-native [WebAssembly](https://webassembly.org) host runtime that dynamically and securely binds Wasm modules to capability providers.
 
 **WebAssembly** is taking the web by storm, however we believe that WebAssembly will **truly** shine _in the cloud_. Most modern browsers today have everything you need to host a WebAssembly module (a _.wasm_ file) and communicate with it in JavaScript. In addition, there are already a number of extremely powerful tools (like _[wasm-bindgen](https://github.com/rustwasm/wasm-bindgen)_) that generate browser-friendly code to dramatically simplify that front-end web developer experience.
 
