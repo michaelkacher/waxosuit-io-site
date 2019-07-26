@@ -32,6 +32,7 @@ You'll need to have a few things ready before you can do this tutorial:
 
 * **waxosuit** - Eventually you'll want this installed, but for now you can just use the docker image.
 * **wascap** - you will need the [wascap](https://github.com/waxosuit/wascap) tool installed (`cargo install wascap --features "cli"`). This is used to sign and verify WebAssembly modules.
+* **cargo generate** - you will need the [cargo-generate crate](https://crates.io/crates/cargo-generate) installed (`cargo install cargo-generate`) to create a project from the waxosuit-guest-template
 
 <a name="create"></a>
 
